@@ -15,8 +15,11 @@ This project was created under the request of interview team of Cal Poly IT team
 
 3. Check out (clone) this project to a local directory 
 
-   `git clone git@github.com:xujiyuan/calpoly.git myCourse `
-   
+   `git clone https://github.com/xujiyuan/calpoly.git myCourse `
+    
+    Npm install to pull all the dependencies 
+    `npm install`
+
    You do not need IDE to run or review angular app, if you want, I recommend the most recent version of
    webstorm, atom and sublime 3
 
