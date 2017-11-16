@@ -1,27 +1,33 @@
-# MyCourse
+# MyCourse app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project was created under the request of interview team of Cal Poly IT team
 
-## Development server
+## If this is your first Angular 5 project, please do following to set up it locally 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+###1. Install node (recommend version 8+)
+   `https://nodejs.org/en/download/`
+   
+###2. Update npm
+   `sudo npm update`
+   
+   install typescript
+   `npm install -g typescript`
 
-## Code scaffolding
+###3. Check out (clone) this project to a local directory 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   `git clone git@github.com:xujiyuan/calpoly.git myCourse `
+   
+   You do not need IDE to run or review angular app, if you want, I recommend the most recent version of
+   webstorm, atom and sublime 3
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+###4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via Karma. Please open your local browser and navigate to `http://localhost:9876/`. 
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## More questions
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If you have trouble getting this app to set up and run or you have any concerns, feel free to send me comments @xuj4@miamioh.edu 
+or call/text me 5138287572 
