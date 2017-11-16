@@ -34,3 +34,5 @@ Run `ng test` to execute the unit tests via Karma. Please open your local browse
 
 If you have trouble getting this app to set up and run or you have any concerns, feel free to send me comments @xuj4@miamioh.edu 
 or call/text me 5138287572 
+
+P.S the code is mostly in `src/app/app.component.ts` and the unit test is in `src/app/app.component.spec.ts`
