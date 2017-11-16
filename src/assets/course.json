@@ -1,0 +1,26 @@
+{
+  "enrollmentCapacity": 30,
+  "reservations": [
+    {  "reservationCapacity": 5,
+      "sequenceId": "1",
+      "effectiveStartDate": "2017-12-01"
+    },
+    {  "reservationCapacity": 10,
+      "sequenceId": "2",
+      "effectiveStartDate": "2017-12-01"
+    },
+    {  "reservationCapacity": 0,
+      "sequenceId": "1",
+      "effectiveStartDate": "2017-12-05"
+    },
+    {  "reservationCapacity": 0,
+      "sequenceId": "2",
+      "effectiveStartDate": "2017-12-10"
+    }
+  ],
+  "currentEnrollment": {
+    "effectiveDate": "2017-12-02",
+    "reservedSeatsEnrolled": 2,
+    "openSeatsEnrolled": 10
+  }
+}
