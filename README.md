@@ -11,7 +11,7 @@ This project was created under the request of interview team of Cal Poly IT team
    `sudo npm update`
    
    install typescript
-   `npm install -g typescript`
+   `sudo npm install -g typescript`
 
 3. Check out (clone) this project to a local directory 
 
