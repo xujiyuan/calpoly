@@ -17,7 +17,7 @@ This project was created under the request of interview team of Cal Poly IT team
 
    `git clone https://github.com/xujiyuan/calpoly.git myCourse `
     
-    Npm install to pull all the dependencies 
+    cd to the directory of your app name, do npm install to pull all the dependencies 
     `npm install`
 
    You do not need IDE to run or review angular app, if you want, I recommend the most recent version of
