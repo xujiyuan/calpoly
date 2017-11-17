@@ -18,7 +18,6 @@ export class AppComponent {
   constructor(private http: HttpClient) {
     this.reservedAvailable = 0;
     this.regularAvailable = 0;
-    // this.course = JSON.parse('course.json');
 
     if (this.http) {
       this.http.get('assets/course.json').subscribe(data => {
@@ -35,26 +34,45 @@ export class AppComponent {
   }
 
   calculateAvailableSeats(course) {
+    let reserCollect = [];
     // add a parameter to function signature to isolate testing functionalities
     if (!course) {
       course = this.course;
     }
     if (course) {
-      this.regularAvailable = course['enrollmentCapacity'];
-
       _.forEach(course['reservations'], (reservation) => {
-        if (new Date(course['currentEnrollment'].effectiveDate) > new Date(reservation.effectiveStartDate)) {
-          this.reservedAvailable += reservation.reservationCapacity;
-          reservation.status = 'Active';
+        if (reserCollect && reserCollect.length > 0 && _.findKey(reserCollect, {'sequenceId': reservation.sequenceId})) {
+          _.forEach(reserCollect, (item) => {
+            if (new Date(course['currentEnrollment'].effectiveDate) > new Date(reservation.effectiveStartDate)
+              && item.sequenceId === reservation.sequenceId
+              && new Date(item.effectiveStartDate) < new Date(reservation.effectiveStartDate)) {
+              console.log('Replace reservation with newer date');
+              item.reservationCapacity = reservation.reservationCapacity;
+            }
+          });
         }
         else {
-          reservation.status = 'Inactive';
+          if (new Date(course['currentEnrollment'].effectiveDate) > new Date(reservation.effectiveStartDate)) {
+            reserCollect.push(reservation);
+          }
         }
-
-
       });
-      this.regularAvailable = this.regularAvailable - (this.reservedAvailable + course['currentEnrollment'].openSeatsEnrolled);
-      this.reservedAvailable = this.reservedAvailable - course['currentEnrollment'].reservedSeatsEnrolled;
+
+      _.forEach(reserCollect, (item) => {
+        this.reservedAvailable += item.reservationCapacity;
+      });
+
+      // console.log(this.reservedAvailable);
+      // console.log(course['currentEnrollment'].reservedSeatsEnrolled);
+      // console.log(course['currentEnrollment'].openSeatsEnrolled);
+      //
+
+      this.regularAvailable = course['enrollmentCapacity']
+        - Math.max(this.reservedAvailable, course['currentEnrollment'].reservedSeatsEnrolled)
+        - course['currentEnrollment'].openSeatsEnrolled;
+
+      this.reservedAvailable = this.reservedAvailable - course['currentEnrollment'].reservedSeatsEnrolled > 0 ?
+        this.reservedAvailable - course['currentEnrollment'].reservedSeatsEnrolled : 0;
 
       return {
         total: course['enrollmentCapacity'],

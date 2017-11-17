@@ -25,7 +25,7 @@ describe('AppComponent', () => {
         }
       ],
       currentEnrollment: {
-        effectiveDate: '2017-12-02',
+        effectiveDate: '2017-12-03',
         reservedSeatsEnrolled: 20,
         openSeatsEnrolled: 10
       }
@@ -89,5 +89,33 @@ describe('AppComponent', () => {
     expect(report.regularAvailable).toEqual(30);
     expect(report.regularTaken).toEqual(10);
   }));
+
+  it('should work when enrolled reserved seats are more than available reserved seats', async(() => {
+    const testCourse = Object.assign(this.course); // make a deep copy of course object
+    testCourse['reservations'].push(
+      {
+        reservationCapacity: 0,
+        sequenceId: '3',
+        effectiveStartDate: '2017-11-01'
+      },
+      {
+        reservationCapacity: 0,
+        sequenceId: '1',
+        effectiveStartDate: '2017-12-02'
+      },
+      {
+        reservationCapacity: 0,
+        sequenceId: '2',
+        effectiveStartDate: '2017-12-02'
+      },
+    );
+    const report = this.app.calculateAvailableSeats(testCourse);
+    expect(report.reservedAvailable).toEqual(0);
+    expect(report.reserveTaken).toEqual(20);
+    expect(report.total).toEqual(100);
+    expect(report.regularAvailable).toEqual(70);
+    expect(report.regularTaken).toEqual(10);
+  }));
+
 
 });
