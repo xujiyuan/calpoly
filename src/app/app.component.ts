@@ -30,11 +30,10 @@ export class AppComponent {
         console.log('Could not get the correct json file' + err);
       });
     }
-
   }
 
   calculateAvailableSeats(course) {
-    let reserCollect = [];
+    const reserCollect = [];
     // add a parameter to function signature to isolate testing functionalities
     if (!course) {
       course = this.course;
@@ -46,7 +45,7 @@ export class AppComponent {
             if (new Date(course['currentEnrollment'].effectiveDate) > new Date(reservation.effectiveStartDate)
               && item.sequenceId === reservation.sequenceId
               && new Date(item.effectiveStartDate) < new Date(reservation.effectiveStartDate)) {
-              console.log('Replace reservation with newer date');
+              // Replace reservation with one that has most recent date and same sequence Id
               item.reservationCapacity = reservation.reservationCapacity;
             }
           });
@@ -61,11 +60,6 @@ export class AppComponent {
       _.forEach(reserCollect, (item) => {
         this.reservedAvailable += item.reservationCapacity;
       });
-
-      // console.log(this.reservedAvailable);
-      // console.log(course['currentEnrollment'].reservedSeatsEnrolled);
-      // console.log(course['currentEnrollment'].openSeatsEnrolled);
-      //
 
       this.regularAvailable = course['enrollmentCapacity']
         - Math.max(this.reservedAvailable, course['currentEnrollment'].reservedSeatsEnrolled)

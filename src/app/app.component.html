@@ -15,26 +15,6 @@
       <li class="list-group-item">Number of available reserved seats <b>{{report.reservedAvailable}}</b></li>
     </ul>
 
-    <hr>
-
-    <h3 class="panel-heading">List of reserved plan</h3>
-    <br>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Sequence Id</th>
-        <th>Capacity</th>
-        <th>Effective Date</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let reservation of course['reservations']">
-        <td>{{reservation.sequenceId}}</td>
-        <td>{{reservation.reservationCapacity}}</td>
-        <td>{{reservation.effectiveStartDate}}</td>
-      </tr>
-      </tbody>
-    </table>
   </div>
 </div>
 
